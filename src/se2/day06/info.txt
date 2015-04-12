@@ -1,0 +1,135 @@
+﻿java反射
+	反射就是JAVA自我管理这些类,对象的机制
+	
+	反射的作用:
+		可以通过反射机制发现对象类型,发现类型的方法,属性,构造器
+		可以创建对象,并访问其中的属性,方法等
+		
+	反射机制中使用的几个重要的类:
+		Class  描述类的类
+		Method  描述方法的类
+		Field  描述属性的类
+		Constructor类  描述构造方法的类
+	Class加载:
+		类加载到内存:JAVA将磁盘类文件加载到内存中,为一个对象(实例)
+				    这个对象是Class的实例
+				    xxx.class ==> Class实例,这个实例描述xxx类
+	
+	Class类实例代表JAVA中的类
+		获取Class类实例(获取某个JAVA类描述)
+		
+		获取描述基本类型的Class实例
+			Class cls = int.class
+			            long.class
+			            double.class
+			            ...
+			            
+		获得引用类型的Class实例
+			Class cls = String.class  类名.class
+			Class cls = Class.forName("java.lang.String")
+			Class cls = "abc".getClass()  对象.getClass()
+			
+		通过Class实例,可以获取这个实例所描述的JAVA类都定义了那些属性,方法和构造器
+
+===============================================================================
+java可视化编程(图形化编程)			
+	GUI(Graphics user interface):图形用户界面
+	AWT(abstract window tools):抽象窗口工具
+	
+	Object
+		|
+		|---Component
+				|
+				|---Button  按钮
+				|
+				|---TextField  文本输入框
+				|
+				|---Container  容器
+				|
+				|---...  等等
+	
+Container  容器
+	容器(Container)本身也是一个组件(Component类),因此容器具有组件的所有性质,另外它还有可以容纳其他组件和容器的功能
+	容器可以通过add()方法向容器中添加其他组件
+	
+	两个主要的容器类型:
+		Window:可以独立存在的顶级窗口
+		Panel:可以作为容纳其他组件的容器,但是不能独立存在,必须被添加到其他的容器中(通常存在在Window中)
+		
+Frame类
+	是Window的子类
+	有标题,可以通过拖拽改变大小
+	初始化是不可见,可以使用setVisible(true)方法使其可见
+	使用BorderLayout作为其默认的[布局管理器]
+	使用setLayout()方法可以改变布局管理器
+
+Panel类
+	为其他组件提供空间
+	允许使用其他的布局管理器
+	使用FlowLayout作为其默认的布局管理器
+	
+===============================================================================
+容器(Container)的布局管理器
+	BorderLayout
+	FlowLayout
+	GridLayout
+	
+FlowLayout
+	容器使用FlowLayout后,容器中的组件将以从左至右的顺序依次排列
+	 若组件达到容器的右边界,则换行显示
+	 
+BorderLayout
+	BorderLayout将窗口划分为5个部分,分别为:东西南北中
+	对应BorderLayout的五个常量:EAST,WEST,SOUTH,NORTH,CENTER
+	在使用该布局的容器中,组件可以在其任意一个区域中
+	注意,使用此布局,容器最多容纳5个组件.若在同一个区域放入多个组件,最后放入的组件部是替换之
+	 前放入的组件
+	 向使用BorderLayout布局的容器中添加组件时,应指定放入的区域,使用容器的重载方法add(),传
+	  入两个参数,第一个为组件,第二个为区域的常量
+	 
+	 组件自适应规则:
+	 	当容器的宽度变化时,NORTH,CENTER,SOUTH的宽度跟着变(水平调整)
+	 	当容器的高度变化时,WEST,CENTER,EAST的宽度跟着变(垂直调整)
+
+GridLayout
+	将容器以表格的样子划分,每个组件放在其中的一个格子中,放入顺序
+	为从左至右,从上至下
+	常用的构造方:
+		GridLayout(int rows,int cols)  指定容器几行几列
+		
+		后两个参数为水平与垂直间距
+		GridLayout(int rows,int cols,int hgap,int vgap)	
+
+
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

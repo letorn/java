@@ -1,0 +1,52 @@
+﻿XML
+===================================================================================
+1. XML
+2. XML的基本语法
+3. DTD
+===================================================================================
+1. XML: 可扩展的标记语言, 可表示数据
+  HTML是一种典型的标记语言, <a href="#">ABC</a>
+
+
+2. XML的基本语法
+  元素: <标记名称>内容</标记的名称>
+  空元素: <标记名称></标记的名称>
+         <标记名称/>
+  属性: <标记名称 属性名1="属性值" 属性名2="属性值">内容</标记的名称>
+  元素可以嵌套:
+    <a>
+      <b>ABC</b>
+      <c>BCD</c>
+    </a>
+  根元素: 对于一个XML文档, 有且只有一个最外层的元素
+    <books>
+      <book id="001">
+        <name>ABC</name>
+        <author>BCD</author>
+      </book>
+      <book id="002">
+        <name>CDE</name>
+        <author>DEF</author>
+      </book>
+    </books>    
+  注释: <!--注释-->
+  实体引用: 
+    &lt;    <
+    &gt;    >
+    &amp;   &
+    &quot;  "
+    &apos;  '
+  CDATA段: <![CDATA[ ... ]]>
+  XML指令: <?xml version="1.0" encoding="utf-8" ?>
+     
+
+3. DTD
+  <?xml version="1.0" encoding="utf-8" ?>
+  <!DOCTYPE book-list[
+    <!ELEMENT book-list (book*)>
+    <!ELEMENT book (name, authors, price)>
+    <!ELEMENT authros (author+)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+  ]>

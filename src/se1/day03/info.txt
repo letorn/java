@@ -1,0 +1,116 @@
+﻿散列表
+	1 容量:散列表中散列数组的长度
+	2 散列运算:对key进行散列值运算的算法.
+	3 散列桶:散列值相同的元素的[线性集合]
+	4 加载因子:散列数组的加载率,一般小于75%性能比较理想
+			  元素数量/散列数组的长度=加载率
+	5 散列查找:根据key计算散列值,根据散列值找到
+			   根据散列值找到对应的散列桶,在捅中顺序比较key,若一样
+			  就返回对应的Value值.
+			  散列表中key不可重复但value可以重复
+
+Map
+	HashMap:以key-value的形式保存数据.key是唯一的不能重复
+		1:key可以是任意对象,value也可以是任意对象
+		2:重复的key算一个.重复的添加是替换操作(会覆盖原来的元素)
+		3:根据key进行散列运算.元素按照散列值排序(不可见)
+		4:HashMap默认容量位16,加载因子位0.75
+		5:HashMap根据key检索查找value值
+		
+	HashMap在构造的时候可以指定容量和加载因子,但一般使用默认的
+	
+	方法:
+		put(Object key,Object value):根据给定key值存放value值
+		get(Object key):根据给定的key值查找并返回对应的value值
+						若没有找到对应的key,返回null	
+		clear():清空散列表
+		containsKey(Object key):查看当前散列表中是否包含给定的
+								key值
+		containsValue(Object value):查看当前散列表中是否包含给
+									定的value值
+		isEmpty():散列表有无元素
+		keySet():返回当前散列表中所有的key(以Set集合返回)
+		remove(Object key):根据key值删除这一项
+		size():返回当前散列表中的元素总数
+		
+HashMap与HashTable
+	HashMap:线程不安全的,效率高.
+	HashTable:线程安全的,效率低.
+
+
+JAVA的泛型
+	泛型是java1.5以后出现的新的语法特性.
+	作用是在[编译期]检查的类型约束.
+	泛型可以约束类中的元素类型.
+
+	ArrayList中使用泛型:
+		
+		public class ArrayList<E> extends XX{
+			//向集合末尾追加元素
+			public void add(E e){
+				...
+			}	
+			//从集合中根据下标获取元素
+			public E get(int index){
+				....
+			}		
+		}
+		
+		ArrayList<Card> cards = new ArrayList<Card>();
+		cards.add(..);
+		Card card = cards.get(0);
+		
+
+集合的迭代
+	集合的迭代是集合的一种遍历算法.
+	
+	java中使用Iterator来描述迭代操作	
+		Iterator是专门为while循环设计的
+		Iterator的实例可以从[集合对象]获取,是这个集合的一个元素
+			序列视图,默认包含一个操作游标(在第一个元素之前)
+		
+		Iterator用于遍历集合元素的方法:	
+			1:hasNext():布尔值表达式,方法的作用位检查当前集合是否
+						还存在下一个元素(检查游标当前位置的下一个)
+			2:next()   :移动游标到下一个元素,并获取这个元素
+				
+		使用while循环配合以上两个方法可以迭代集合中所有元素
+		
+		注意:
+		迭代时可以使用迭代器Iterator的remove()方法删除刚刚迭代的元素
+		但是在迭代过程中不能调用集合的(add,remove,set)方法,否则迭代
+		可能会报错
+		
+		Iterator多用在对Set集合的迭代中.
+		
+		
+Collections 集合工具类
+		同数组工具类Arrays类似,是集合的工具类.提供了许多的方法
+		例如:排序,二分查找,乱序等
+		
+Comparable和Comparator
+	Comparable:是一个接口,它用于描述其子类是可以比较的,可以进行
+		               自然排序
+	
+	Comparable有一个抽象方法:compareTo()
+			  此方法的返回值为int值:若此值大于0,表示大
+			                                             若此值小于0,表示小
+	                                                               若此值等于0,表示相等
+	comparable的实现必须与equals结果相同,就是equals为true时,
+			    比较结果必须为0(compareTo()方法返回0)
+=========================================================
+	Comparator:比较工具
+		用于自定义比较规则,不是默认的比较规则
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			   

@@ -1,0 +1,142 @@
+﻿包装类
+	可以把基本类型(简单类型)转变为一个对象类型(引用类型)
+	基本类型:保存数据本身
+	引用类型:保存对象的地址
+	
+	int					Integer
+	long				Long
+	double				Double
+	float				Float
+	char				Character
+	boolean				Boolean
+	byte				Byte
+	short				Short
+	
+	想把int数据存入ArrayList中怎么办?
+	
+	int a = 10;
+	
+	ArrayList al = new ArrayList();
+	
+	al.add(a);//这样写在java1.4的时候是语法错误的!!!
+	
+	add方法的参数是Object类型的
+	
+	解决办法
+		应该将int这个基本类型转换为一个对象类型(顶级父类是Object)
+		使用简单类型对应的包装类的构造方法创建一个对应的包装类对象
+	int a = 10;
+	Integer num = new Integer(a);//将基本类型转为对应的包装类
+	ArrayList al = new ArrayList();
+	al.add(num);
+	
+	
+	将基本类型数据转变为其包装类的过程称之为:  装箱	
+	将包装类的对象转变为基本类型称之为:		       拆箱
+	
+	注意:
+		java在1.5以后支持了自动拆装箱.
+	
+	Double将字符串转换为double值:Double.parseDouble(str);
+	Double将对象转为double值(拆箱):d.doubleValue();
+	以此类推,其他包装类方法类似.
+	
+	注意事项:
+		包装类是final的
+		包装类是不变对象,与字符串类似
+		包装类覆盖了toString(),equals(),hashCode(),compareTo()
+	
+==============================================================
+
+集合的复制
+	集合复制:java中默认的复制规则为浅表(浅层)复制	
+			只复制集合本身,集合内的元素不复制
+			
+	集合复制有2中方式:
+		1:调用集合对象的clone()
+			clone()方法是定义在Object中的
+			
+		2:使用集合的[复制构造器]
+			是否复制构造器不但可以做到浅表复制,还可以方便的在不同
+			集合类型间来回转换
+			注意:集合Collection不能直接转换为Map
+
+同步化(线程安全)的集合
+	同步化的解决方案
+		Collections.synchronizedList()方法可以将一个集合转换为
+		一个线程安全的集合
+		例如:
+			ArrayList list = new ArrayList();
+			
+			//相当于创建了一个Vector
+			List arr = Collections.synchronizedList(list);
+			
+			
+			HashSet set = new HashSet();
+			
+			Set s = Collections.synchronizedSet(set);
+		
+			
+			HashMap map = new HashMap();
+			Map m = Collections.synchronizedMap(map);
+	
+Collection和Collections
+	Collections:是集合的工具类
+	Collection:是集合的接口,它有两个子接口分别为:List和Set
+
+	
+数组与集合之间的转换
+	数组转List:Arrays.asList()方法,可以将一个数组转换为List
+		    注意:转换后的集合为只读的.
+	
+	
+	List转数组:list.toArray()方法,可以将一个List转换为数组
+		    注意:默认转换为Object数组,若想转换为指定数组,需要
+		              给toArray()方法传入指定数组
+	
+========================================================	
+Map的迭代
+	对key:value成对迭代           map.entrySet();	
+						   返回一个Set集合,集合中元素为Entry
+						   一个Entry中包含一个Key和一个Value
+							
+	对key迭代			   map.keySet();
+						  返回一个Set集合,集合中的元素为key值
+						  
+	对value迭代                           map.values();
+				
+========================================================
+
+内部类
+	 java中的内部类形式:
+	 	1:静态内部类
+	 	2:成员内部类
+	 	3:局部内部类
+	 	4:匿名内部类
+
+	 内部类:定义在类的内部的类	
+	
+	静态内部类:
+		定义类的时候使用static修饰.声明在类体中
+		静态内部类可以访问其外部类的[静态成员]
+	 	
+
+	成员内部类:
+		声明在类体中的(和外部类属性或方法齐平的位置)
+		
+		它具有类的成员的一切特性:必须有外部类的实例(对象)才能
+		创建内部类实例				   
+		
+		成员内部类也可以访问外部类的成员(很常用).
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
